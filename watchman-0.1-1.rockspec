@@ -1,5 +1,5 @@
 package = 'watchman'
-version = '0.1'
+version = '0.1-1'
 
 source = {
     url = 'git://github.com/miGlanz/watchman.git',
@@ -27,7 +27,7 @@ build = {
         ptrace = {
             sources = {'lptrace.c'},
         },
-        cspox = {
+        cwatchman = {
             sources = {'lcwatchman.c'},
         },
     },
