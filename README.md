@@ -17,7 +17,7 @@
 
 Let's say you want to start (and keep it running) the `nginx` web server. You would start with a simple `nginx.lua` configuration file:
 
-    process 'nginx' '/usr/sbin/nginx -c /etc/nginx/conf/nginx.conf'
+    nginx = process 'nginx' '/usr/sbin/nginx -c /etc/nginx/conf/nginx.conf'
 
 That's it. Let's start running this configuration file:
 
@@ -43,6 +43,12 @@ Right after you saved this file you should see the following output in the `watc
     Starting cat.
 
 `nginx` is of course still running!
+
+What if we wanted to automatically reload `nginx` when the configuration file is modified? `nginx` can reload its configuration while running. But it doesn't autodetect modifications to this file. Fortunately `watchman` can do this pretty well. Simply add the following line to our `nginx.lua`:
+
+    watch_contents('/etc/nginx/conf/nginx.conf', nginx.reload)
+
+Now, whenever we modify `nginx.conf` the `nginx` process will get `SIGHUP` signal.
 
 
 ## API
