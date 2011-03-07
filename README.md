@@ -61,8 +61,12 @@ These are functions you may use in `watchman` configuration files:
 
 ## Credits
 
-`Watchman` uses the following great components:
+`watchman` uses the following great components:
 
 * [libev](http://software.schmorp.de/pkg/libev.html)
 * [ragel](http://www.complang.org/ragel/)
 
+
+## License
+
+`watchman` is free software and uses the same [license](http://www.opensource.org/licenses/mit-license.html) as Lua 5.1.
