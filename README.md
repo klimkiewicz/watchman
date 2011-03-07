@@ -47,6 +47,18 @@ Right after you saved this file you should see the following output in the `watc
 
 ## API
 
+These are functions you may use in `watchman` configuration files:
+
+* **process(process_name)(process_options)**
+* **watch_process(process, callback)**
+* **unwatch_process(process [, callback])**
+* **watch_path(path, callback)**
+* **unwatch_path(path [, callback])**
+* **watch_contents(path, callback)**
+* **unwatch_contents(path [, callback])**
+* **watch_cron(cron_spec, callback)**
+* **unwatch_cron(cron_spec [, callback])**
+
 ## Credits
 
 `Watchman` uses the following great components:
