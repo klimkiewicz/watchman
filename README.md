@@ -8,7 +8,7 @@
 `watchman` has a couple of features you won't find in other similar tools:
 
 * It's event based (we're using great [libev](http://software.schmorp.de/pkg/libev.html) library);
-* You match `watch` for such events as: process state changes, file/directory changes, cron-based time events;
+* You may `watch` for such events as: process state changes, file/directory changes, cron-based time events;
 * `watchman` watches for changes in its configuration file itself, if a change is detected it's automatically picked up (no running processes are stopped);
 * `watchman` uses Linux `ptrace()` facility and can detect daemonizing processes automatically - it doesn't have to track pid-files.
 
