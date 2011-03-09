@@ -475,7 +475,7 @@ end
 
 -- Load and execute the configuration file
 
-if (not arg[1]) then
+if (not arg or not arg[1]) then
     print(USAGE)
     os.exit(1)
 end
