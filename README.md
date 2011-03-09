@@ -70,6 +70,7 @@ These are functions you may use in `watchman` configuration files:
 `watchman` uses the following great components:
 
 * [libev](http://software.schmorp.de/pkg/libev.html)
+* [lua-ev](https://github.com/brimworks/lua-ev)
 * [ragel](http://www.complang.org/ragel/)
 
 
