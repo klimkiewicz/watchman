@@ -29,7 +29,7 @@ require 'sha2'
 
 
 local LOOP = ev.Loop.default
-local USAGE = ''
+local USAGE = 'Usage: watchman config'
 
 local processes = {}
 local ordered_processes = {}
@@ -537,30 +537,34 @@ end
 local function config_changed()
     print(arg[1] .. ' file changed - reloading')
 
-    local current_processes = {}
-    for k, v in pairs(processes) do
-        current_processes[k] = v
-    end
-
-    processes = {}
-
-    -- Remove all existing watches
-    path_register.clear()
-    contents_register.clear()
-    time_register.clear()
-    process_register.clear()
-
     local config = loadfile(arg[1])
     if (config) then
+        local current_processes = {}
+        for k, v in pairs(processes) do
+            current_processes[k] = v
+        end
+
+        processes = {}
+
+        -- Remove all existing watches
+        path_register.clear()
+        contents_register.clear()
+        time_register.clear()
+        process_register.clear()
+
         config_env['process'] = reload_process(current_processes)
         setfenv(config, config_env)
-        config()
-    end
+        res, err = pcall(config)
 
-    -- Stop services that are not defined in the new config file
-    for k, v in pairs(current_processes) do
-        if (not processes[k]) then
-            v.stop()
+        if (res) then
+            -- Stop services that are not defined in the new config file
+            for k, v in pairs(current_processes) do
+                if (not processes[k]) then
+                    v.stop()
+                end
+            end
+        else
+            print(err)
         end
     end
 
