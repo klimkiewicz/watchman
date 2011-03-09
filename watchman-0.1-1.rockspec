@@ -20,7 +20,7 @@ dependencies = {
 build = {
     type = 'builtin',
     modules = {
-        spox = 'watchman.lua',
+        watchman = 'watchman.lua',
         cron = {
             sources = {'lcron.c'},
         },
@@ -30,6 +30,9 @@ build = {
         cwatchman = {
             sources = {'lcwatchman.c'},
         },
+    },
+    install = {
+        bin = {'watchman.lua'},
     },
 }
 
