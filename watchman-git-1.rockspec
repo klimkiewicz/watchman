@@ -1,5 +1,5 @@
 package = 'watchman'
-version = '0.1-1'
+version = 'git-1'
 
 source = {
     url = 'git://github.com/miGlanz/watchman.git',
