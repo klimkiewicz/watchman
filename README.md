@@ -16,7 +16,11 @@
 ## Sample script
 
     NGINX_CONF = '/etc/nginx/conf/nginx.conf'
+
+    -- Launch nginx daemon (and keep it running if it goes down)
     nginx = process 'nginx' { '/usr/sbin/nginx -c ' .. NGINX_CONF }
+
+    -- Reload nginx (by sending SIGHUP) if the config file changes
     watch_contents(NGINX_CONF, nginx.reload)
 
 
