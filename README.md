@@ -13,6 +13,13 @@
 * `watchman` uses Linux `ptrace()` facility and can detect daemonizing processes automatically - it doesn't have to track pid-files.
 
 
+## Sample script
+
+    NGINX_CONF = '/etc/nginx/conf/nginx.conf'
+    nginx = process 'nginx' { '/usr/sbin/nginx -c ' .. NGINX_CONF }
+    watch_contents(NGINX_CONF, nginx.reload)
+
+
 ## Overview
 
 Let's say you want to start (and keep it running) the `nginx` web server. You would start with a simple `nginx.lua` configuration file:
