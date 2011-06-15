@@ -17,7 +17,7 @@
 
     NGINX_CONF = '/etc/nginx/conf/nginx.conf'
 
-    -- Launch nginx daemon (and keep it running if it goes down)
+    -- Launch nginx daemon (and respawn it if it goes down)
     nginx = process 'nginx' { '/usr/sbin/nginx -c ' .. NGINX_CONF }
 
     -- Reload nginx (by sending SIGHUP) if the config file changes
@@ -47,7 +47,7 @@ As you see, `watchman` detected that the process was killed and restarted it aut
 
 Let's add another process for `watchman` to monitor. Without stopping `watchman`, add the following line to `nginx.lua`:
 
-    process 'cat '/bin/cat'
+    process 'cat' '/bin/cat'
 
 Right after you saved this file you should see the following output in the `watchman` console:
 
