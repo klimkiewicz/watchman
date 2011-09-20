@@ -9,6 +9,7 @@ You will need the following components first:
 
 1. [Lua 5.1](http://lua.org)
 2. [LuaRocks](http://luarocks.org)
+3. [libev](http://software.schmorp.de/pkg/libev.html)
 
 Then simply do:
 
