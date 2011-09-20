@@ -8,6 +8,7 @@ source = {
 description = {
     summary = 'Event-based process monitor',
     license = 'MIT/X11',
+    homepage = "http://github.com/miGlanz/watchman",
 }
 
 supported_platforms = {
