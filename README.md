@@ -15,14 +15,15 @@
 
 ## Sample script
 
-    NGINX_CONF = '/etc/nginx/conf/nginx.conf'
+```lua
+NGINX_CONF = '/etc/nginx/conf/nginx.conf'
 
-    -- Launch nginx daemon (and respawn it if it goes down)
-    nginx = process 'nginx' { '/usr/sbin/nginx -c ' .. NGINX_CONF }
+-- Launch nginx daemon (and respawn it if it goes down)
+nginx = process 'nginx' { '/usr/sbin/nginx -c ' .. NGINX_CONF }
 
-    -- Reload nginx (by sending SIGHUP) if the config file changes
-    watch_contents(NGINX_CONF, nginx.reload)
-
+-- Reload nginx (by sending SIGHUP) if the config file changes
+watch_contents(NGINX_CONF, nginx.reload)
+```
 
 ## Overview
 
