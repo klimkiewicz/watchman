@@ -10,9 +10,12 @@ description = {
     license = 'MIT/X11',
 }
 
+supported_platforms = {
+    'linux',
+}
+
 dependencies = {
     'lua >= 5.1',
-    'lua_signal',
     'lua-ev',
     'sha2',
 }
