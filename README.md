@@ -3,6 +3,22 @@
 `watchman` is a lightwight, easy-to-use process monitor. It's written in a mix of Lua and C.
 
 
+## Installation
+
+You will need the following components first:
+
+1. [Lua 5.1](http://lua.org)
+2. [LuaRocks](http://luarocks.org)
+
+Then simply do:
+
+```bash
+sudo luarocks install lua_signal
+sudo luarocks install https://raw.github.com/miGlanz/watchman/master/lua-ev-scm-1.rockspec
+sudo luarocks install https://raw.github.com/miGlanz/watchman/master/watchman-git-1.rockspec
+```
+
+
 ## Features
 
 `watchman` has a couple of features you won't find in other similar tools:
@@ -29,15 +45,21 @@ watch_contents(NGINX_CONF, nginx.reload)
 
 Let's say you want to start (and keep it running) the `nginx` web server. You would start with a simple `nginx.lua` configuration file:
 
-    nginx = process 'nginx' '/usr/sbin/nginx -c /etc/nginx/conf/nginx.conf'
+```lua
+nginx = process 'nginx' '/usr/sbin/nginx -c /etc/nginx/conf/nginx.conf'
+```
 
 That's it. Let's start running this configuration file:
 
-    watchman nginx.lua
+```bash
+watchman nginx.lua
+```
 
 `nginx` is now running. Let's open another terminal window and try to terminate it:
 
-    killall nginx
+```bash
+killall nginx
+```
 
 You should see the following output in the `watchman` window:
 
@@ -48,7 +70,9 @@ As you see, `watchman` detected that the process was killed and restarted it aut
 
 Let's add another process for `watchman` to monitor. Without stopping `watchman`, add the following line to `nginx.lua`:
 
-    process 'cat' '/bin/cat'
+```lua
+process 'cat' '/bin/cat'
+```
 
 Right after you saved this file you should see the following output in the `watchman` console:
 
@@ -58,7 +82,9 @@ Right after you saved this file you should see the following output in the `watc
 
 What if we wanted to automatically reload `nginx` when the configuration file is modified? `nginx` can reload its configuration while running. But it doesn't autodetect modifications to this file. Fortunately `watchman` can do this pretty well. Simply add the following line to our `nginx.lua`:
 
-    watch_contents('/etc/nginx/conf/nginx.conf', nginx.reload)
+```lua
+watch_contents('/etc/nginx/conf/nginx.conf', nginx.reload)
+```
 
 Now, whenever we modify `nginx.conf` the `nginx` process will get `SIGHUP` signal.
 
